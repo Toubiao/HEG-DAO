@@ -25,7 +25,23 @@ public class ElevesDao implements Dao<Eleve> {
 
     @Override
     public boolean update(Eleve obj) {
-        return false;
+        boolean retour = false;
+        try {
+            int result = ConnectionManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE eleves SET matricule = "+obj.getMatricule()+", nom = "+obj.getNom()+", prenom = "+obj.getPrenom()+", date_naiss="+obj.getDateNaiss()+" WHERE numero="+obj.getNumber()+"");
+
+            retour = (result ==1);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return retour;
+
+
+
     }
 
     @Override
