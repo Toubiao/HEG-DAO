@@ -13,7 +13,7 @@ public class XmlElevesDao implements Dao<Eleve> {
     }
 
     @Override
-    public boolean delete(Eleve obj) {
+    public boolean delete(int nb) {
         return false;
     }
 

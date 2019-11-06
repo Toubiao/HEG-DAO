@@ -15,4 +15,10 @@ public class EleveDaoTest {
         List<Eleve> eleves = AbstractDaoFactory.getFactory("db").getEleveDAO().findAll();
         Assertions.assertEquals(eleves.size(),2617);
     }
+
+    @Test
+    public void testDeleteShouldBeTrue(){
+        Assertions.assertEquals(true,AbstractDaoFactory.getFactory("db").getEleveDAO().delete(3));
+
+    }
 }

@@ -19,7 +19,19 @@ public class ElevesDao implements Dao<Eleve> {
     }
 
     @Override
-    public boolean delete(Eleve obj) {
+    public boolean delete(int nb) {
+        try {
+            int result = ConnectionManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE).executeUpdate(
+                    "DELETE FROM eleves WHERE numero = " + nb + ";");
+            return 1 == result;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        ConnectionManager.closeConnection();
+
         return false;
     }
 
@@ -40,10 +52,10 @@ public class ElevesDao implements Dao<Eleve> {
             ResultSet result = ConnectionManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT E.Numero as \"num\",E.Matricule as \"matr\",E.Nom as \"nom\",E.Prenom as \"pren\",E.Date_Naiss as \"datenaiss\" \n" +
-                    "FROM Eleves e");
-            if(result.first()) {
+                    "FROM Eleves e" );
+            if (result.first()) {
                 deserializeEleve(eleves, result);
-                while (result.next()){
+                while (result.next()) {
                     deserializeEleve(eleves, result);
                 }
             }
