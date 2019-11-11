@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class EleveDaoTest {
@@ -20,5 +23,21 @@ public class EleveDaoTest {
     public void testDeleteShouldBeTrue(){
         Assertions.assertEquals(true,AbstractDaoFactory.getFactory("db").getEleveDAO().delete(3));
 
+    }
+
+    @Test
+    public void testUpdateEleve(){
+        Date now = new Date();
+        DateFormat dt1 = new SimpleDateFormat("dd.MM.yyyy");
+        System.out.println("Format dd.MM.yyyy : " + dt1.format(now));
+
+        Eleve obj = new Eleve(348,"38283","Rossi","Stéphane",now);
+
+
+        if(AbstractDaoFactory.getFactory("db").getEleveDAO().update(obj)){
+            System.out.println("Test successed...");
+        }else {
+            System.out.println("Test failed...");
+        }
     }
 }
