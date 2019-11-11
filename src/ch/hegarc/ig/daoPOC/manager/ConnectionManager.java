@@ -14,6 +14,7 @@ public class ConnectionManager {
     public static void openConnection(){
         try{
             cnn = DriverManager.getConnection(DBURL,DBUSER,DBPWD);
+            cnn.setAutoCommit(false);
         } catch (SQLException e) {
             //TODO: log ex
             e.printStackTrace();
@@ -22,6 +23,7 @@ public class ConnectionManager {
 
     public static Connection getConnection(){
         openConnection();
+
         return cnn;
     }
 

@@ -26,7 +26,7 @@ public class ElevesDao implements Dao<Eleve> {
             int result = ConnectionManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE).executeUpdate(
-                    "DELETE FROM eleves WHERE numero = " + nb + ";");
+                    "DELETE FROM eleves WHERE numero = " + nb);
             return 1 == result;
 
         } catch (SQLException e) {
