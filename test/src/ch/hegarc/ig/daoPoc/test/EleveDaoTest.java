@@ -34,10 +34,7 @@ public class EleveDaoTest {
         Eleve obj = new Eleve(348,"38283","Rossi","Stéphane",now);
 
 
-        if(AbstractDaoFactory.getFactory("db").getEleveDAO().update(obj)){
-            System.out.println("Test successed...");
-        }else {
-            System.out.println("Test failed...");
-        }
+        Assertions.assertTrue(AbstractDaoFactory.getFactory("db").getEleveDAO().update(obj));
+
     }
 }
