@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -28,11 +29,7 @@ public class EleveDaoTest {
     @Test
     public void testUpdateEleve(){
         Date now = new Date();
-        DateFormat dt1 = new SimpleDateFormat("dd.MM.yyyy");
-        System.out.println("Format dd.MM.yyyy : " + dt1.format(now));
-
-        Eleve obj = new Eleve(348,"38283","Rossi","Stéphane",now);
-
+        Eleve obj  = new Eleve(348,"38283","Rossi","Stéphane",now);
 
         Assertions.assertTrue(AbstractDaoFactory.getFactory("db").getEleveDAO().update(obj));
 

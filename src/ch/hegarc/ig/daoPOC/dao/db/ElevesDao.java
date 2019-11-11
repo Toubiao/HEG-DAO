@@ -8,6 +8,8 @@ import ch.hegarc.ig.daoPOC.manager.ConnectionManager;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,9 +41,11 @@ public class ElevesDao implements Dao<Eleve> {
     public boolean update(Eleve obj) {
         boolean retour = false;
         try {
+            DateFormat dt1 = new SimpleDateFormat("dd.MM.yy");
             int result = ConnectionManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE eleves SET matricule = "+obj.getMatricule()+", nom = "+obj.getNom()+", prenom = "+obj.getPrenom()+", date_naiss="+obj.getDateNaiss()+" WHERE numero="+obj.getNumber()+"");
+                    ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE eleves SET matricule = "+obj.getMatricule()+", nom = "+"'"+obj.getNom()+"'"+", prenom = "+"'"+obj.getPrenom()+"'"+", date_naiss = "+"'"+
+                    dt1.format(obj.getDateNaiss())+"'"+" WHERE numero="+obj.getNumber()+"");
 
             retour = (result ==1);
 
