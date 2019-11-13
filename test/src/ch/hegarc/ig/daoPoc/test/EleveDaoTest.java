@@ -1,5 +1,6 @@
 package ch.hegarc.ig.daoPoc.test;
 
+import ch.hegarc.ig.daoPOC.dao.db.ElevesDao;
 import ch.hegarc.ig.daoPOC.entity.Eleve;
 import ch.hegarc.ig.daoPOC.factory.AbstractDaoFactory;
 import org.junit.jupiter.api.Assertions;
@@ -21,9 +22,14 @@ public class EleveDaoTest {
     }
 
     @Test
+    public void testFindShouldBeStephane(){
+        Eleve eleve = ((ElevesDao) AbstractDaoFactory.getFactory("db").getEleveDAO()).find(348);
+        String eleveName = "Stéphane";
+        Assertions.assertTrue(eleve.getPrenom().equals(eleveName));
+    }
+    @Test
     public void testDeleteShouldBeTrue(){
         Assertions.assertEquals(true,AbstractDaoFactory.getFactory("db").getEleveDAO().delete(3));
-
     }
 
     @Test

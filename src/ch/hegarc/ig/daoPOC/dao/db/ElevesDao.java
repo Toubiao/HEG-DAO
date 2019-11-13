@@ -61,7 +61,24 @@ public class ElevesDao implements Dao<Eleve> {
     }
 
     @Override
-    public Eleve find(int id) {
+    public Eleve find(int id){
+        try{
+            List<Eleve> eleve = new ArrayList<>(1);
+            ResultSet result = ConnectionManager.getConnection().createStatement(
+            ResultSet.TYPE_SCROLL_INSENSITIVE,
+            ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT E.Numero as \"num\",E.Matricule as \"matr\",E.Nom as \"nom\",E.Prenom as \"pren\",E.Date_Naiss as \"datenaiss\" \n" +
+            "FROM Eleves e WHERE E.Numero = "+id );
+
+            if (result.first()) {
+                 deserializeEleve(eleve ,result);
+            }
+            return eleve.get(0);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        // On ferme la connection
+        ConnectionManager.closeConnection();
+
         return null;
     }
 
