@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface Dao<T> {
 
-    boolean create(Eleve obj);
+    boolean create(T obj);
     boolean delete(int nb);
-    boolean update(Eleve obj);
+    boolean update(T obj);
     T find(int id);
     List<T> findAll();
 
