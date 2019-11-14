@@ -24,7 +24,7 @@ public class EleveDaoTest {
     @Test
     public void testFindShouldBeStephane(){
         Eleve eleve = ((ElevesDao) AbstractDaoFactory.getFactory("db").getEleveDAO()).find(348);
-        String eleveName = "Stéphane";
+        String eleveName = "Stephane";
         Assertions.assertTrue(eleve.getPrenom().equals(eleveName));
     }
     @Test
