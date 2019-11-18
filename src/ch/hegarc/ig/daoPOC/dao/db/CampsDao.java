@@ -9,103 +9,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-    public class CampsDao implements Dao<Camp> {
+public class CampsDao implements Dao<Camp> {
 
-        @Override
-        public boolean create(Camp obj) {
-            return false;
-        }
-
-        @Override
-        public boolean delete(int nb) {
-            try {
-                int result = ConnectionManager.getConnection().createStatement(
-                        ResultSet.TYPE_SCROLL_INSENSITIVE,
-                        ResultSet.CONCUR_UPDATABLE).executeUpdate(
-                        "DELETE FROM camps WHERE numero = " + nb);
-                return 1 == result;
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            ConnectionManager.closeConnection();
-
-            return false;
-        }
-
-        @Override
-        public boolean update(Camp obj) {
-            boolean retour = false;
-            try {
-                int result = ConnectionManager.getConnection().createStatement(
-                        ResultSet.TYPE_SCROLL_INSENSITIVE,
-                        ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE camps SET lieu = "+obj.getLieu()+", prix = "+obj.getPrix()+", max_place = "+obj.getMax_place()+
-                        " WHERE numero="+obj.getNumber()+")");
-
-                retour = (result ==1);
-
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            return retour;
-
-
-
-        }
-
-        @Override
-        public Camp find(int id){
-            try{
-                List<Camp> camp = new ArrayList<Camp>(1);
-                ResultSet result = ConnectionManager.getConnection().createStatement(
-                        ResultSet.TYPE_SCROLL_INSENSITIVE,
-                        ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT Numero as \"num\",Lieu as \"lieu\",Prix as \"prix\",Max_place as \"max\" \n" +
-                        "FROM Camps WHERE Numero = "+id );
-
-                if (result.first()) {
-                    deserializeCamps(camp ,result);
-                }
-                return camp.get(0);
-            } catch (SQLException e){
-                e.printStackTrace();
-            }
-            // On ferme la connection
-            ConnectionManager.closeConnection();
-
-            return null;
-        }
-
-        @Override
-        public List<Camp> findAll() {
-            List<Camp> camps = new ArrayList<>();
-            try {
-                ResultSet result = ConnectionManager.getConnection().createStatement(
-                        ResultSet.TYPE_SCROLL_INSENSITIVE,
-                        ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT Numero as \"num\",Lieu as \"lieu\",Prix as \"prix\",Max_place as \"max\" \n" +
-                        "FROM Camps");
-                if (result.first()) {
-                    deserializeCamps(camps, result);
-                    while (result.next()) {
-                        deserializeCamps(camps, result);
-                    }
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            ConnectionManager.closeConnection();
-            return camps;
-        }
-
-        private void deserializeCamps(List<Camp> camps, ResultSet result) throws SQLException {
-            Camp aCamps;
-            aCamps = new Camp(
-                    result.getInt(1),
-                    result.getString(2),
-                    result.getBigDecimal(3),
-                    result.getInt(4)
-            );
-            camps.add(aCamps);
-        }
+    @Override
+    public boolean create(Camp obj) {
+        return false;
     }
+
+    @Override
+    public boolean delete(int nb) {
+        return true;
+    }
+
+    @Override
+    public boolean update(Camp obj) {
+        return true;
+    }
+
+    @Override
+    public Camp find(int id) {
+        return null;
+    }
+
+    @Override
+    public List<Camp> findAll() {
+        return null;
+    }
+}
