@@ -1,15 +1,14 @@
 package ch.hegarc.ig.daoPOC.dao.xml;
 
 import ch.hegarc.ig.daoPOC.dao.intf.Dao;
-import ch.hegarc.ig.daoPOC.entity.Camps;
-import ch.hegarc.ig.daoPOC.entity.Eleve;
+import ch.hegarc.ig.daoPOC.entity.Camp;
 
 import java.util.List;
 
-public class XmlCampsDao implements Dao<Camps> {
+public class XmlCampsDao implements Dao<Camp> {
 
     @Override
-    public boolean create(Camps obj) {
+    public boolean create(Camp obj) {
         return false;
     }
 
@@ -19,17 +18,17 @@ public class XmlCampsDao implements Dao<Camps> {
     }
 
     @Override
-    public boolean update(Camps obj) {
+    public boolean update(Camp obj) {
         return false;
     }
 
     @Override
-    public Camps find(int id) {
+    public Camp find(int id) {
         return null;
     }
 
     @Override
-    public List<Camps> findAll() {
+    public List<Camp> findAll() {
         return null;
     }
 }
