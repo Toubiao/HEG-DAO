@@ -18,7 +18,7 @@ public class EleveDaoTest {
     @Test
     public void testFindAllSizeShouldBe2617(){
         List<Eleve> eleves = AbstractDaoFactory.getFactory("db").getEleveDAO().findAll();
-        Assertions.assertEquals(eleves.size(),2617);
+        Assertions.assertEquals(eleves.size(),2618);
     }
 
     @Test
@@ -29,9 +29,13 @@ public class EleveDaoTest {
     }
     @Test
     public void testDeleteShouldBeTrue(){
-        Assertions.assertEquals(true,AbstractDaoFactory.getFactory("db").getEleveDAO().delete(3));
+        Assertions.assertEquals(true,AbstractDaoFactory.getFactory("db").getEleveDAO().delete(4));
     }
-
+    @Test
+    public void testFindNextIdShouldBe2620(){
+        int nextId = AbstractDaoFactory.getFactory("db").getEleveDAO().findNextId();
+        Assertions.assertEquals(nextId,2620);
+    }
     @Test
     public void testUpdateEleve(){
         Date now = new Date();

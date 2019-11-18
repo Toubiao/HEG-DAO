@@ -31,4 +31,8 @@ public class XmlCampsDao implements Dao<Camp> {
     public List<Camp> findAll() {
         return null;
     }
+    @Override
+    public int findNextId() {
+        return 0;
+    }
 }

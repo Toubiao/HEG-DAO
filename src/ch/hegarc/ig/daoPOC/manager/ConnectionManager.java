@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class ConnectionManager {
     private static final String DBURL = "jdbc:oracle:thin:@db.ig.he-arc.ch:1521:ens";
-    private static final String DBUSER = "OUSSAMA_TOUBIA";
-    private static final String DBPWD = "OUSSAMA_TOUBIA";
+    private static final String DBUSER = "MELVYN_VOGELSAN";
+    private static final String DBPWD = "MELVYN_VOGELSAN";
     private static Connection cnn;
 
 

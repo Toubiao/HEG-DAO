@@ -21,7 +21,11 @@ public class CampDaoTest {
         List<Camp> camps = AbstractDaoFactory.getFactory("db").getCampDAO().findAll();
         Assertions.assertEquals(camps.size(),15);
     }
-
+    @Test
+    public void testFindNextIdShouldBe14(){
+        int nextId = AbstractDaoFactory.getFactory("db").getCampDAO().findNextId();
+        Assertions.assertEquals(nextId,14);
+    }
     @Test
     public void testFindShouldBeCharmey(){
         Camp camp = ((CampsDao) AbstractDaoFactory.getFactory("db").getCampDAO()).find(1);

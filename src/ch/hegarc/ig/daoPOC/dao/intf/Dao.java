@@ -11,5 +11,5 @@ public interface Dao<T> {
     boolean update(T obj);
     T find(int id);
     List<T> findAll();
-
+    int findNextId();
 }

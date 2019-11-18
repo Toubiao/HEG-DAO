@@ -31,4 +31,7 @@ public class XmlElevesDao implements Dao<Eleve> {
     public List<Eleve> findAll() {
         return null;
     }
+
+    @Override
+    public int findNextId(){return 0;};
 }
