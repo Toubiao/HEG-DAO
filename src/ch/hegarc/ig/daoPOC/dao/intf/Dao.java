@@ -10,6 +10,7 @@ public interface Dao<T> {
     boolean delete(int nb);
     boolean update(T obj);
     T find(int id);
+    int findNextId();
     List<T> findAll();
 
 }

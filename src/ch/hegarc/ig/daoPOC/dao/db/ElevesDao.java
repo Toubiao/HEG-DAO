@@ -20,6 +20,24 @@ public class ElevesDao implements Dao<Eleve> {
         return false;
     }
 
+    public int findNextId() {
+        try{
+            ResultSet result = ConnectionManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE).executeQuery(
+                    "SELECT max(numero)+1 as \"next\" FROM eleves"
+            );
+            if(result.first()){
+                return result.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        ConnectionManager.closeConnection();
+        return 0;
+    }
+
+
     @Override
     public boolean delete(int nb) {
         try {
