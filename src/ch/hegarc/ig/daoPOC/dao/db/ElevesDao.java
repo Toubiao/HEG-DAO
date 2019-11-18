@@ -17,6 +17,16 @@ public class ElevesDao implements Dao<Eleve> {
 
     @Override
     public boolean create(Eleve obj) {
+        try {
+            DateFormat dt1 = new SimpleDateFormat("dd.MM.yy");
+            int result = ConnectionManager.getConnection().createStatement(
+                    ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY).executeUpdate( "INSERT INTO Eleves (numero, matricule, nom, prenom, Date_Naiss, num_clas) VALUES (" + obj.getNumber() + ",\'" + obj.getMatricule() + "\',\'" + obj.getNom() + "\',\'" + obj.getPrenom() + "\',\'" + dt1.format(obj.getDateNaiss())+"\',\'2\'   )");
+            return result == 1;
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 

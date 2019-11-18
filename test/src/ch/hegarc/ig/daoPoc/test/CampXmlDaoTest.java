@@ -5,13 +5,11 @@ import ch.hegarc.ig.daoPOC.factory.AbstractDaoFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-public class EleveXmlDaoTest {
+public class CampXmlDaoTest {
 
     @Test
-    public void testFindAllSizeShouldBe2617(){
+    public void testFindAllSizeShouldBe?(){
 //        List<Eleve> eleves = AbstractDaoFactory.getFactory("xml").getEleveDAO().findAll();
 //        Assertions.assertEquals(eleves.size(),2617);
     }
-            }
+}
