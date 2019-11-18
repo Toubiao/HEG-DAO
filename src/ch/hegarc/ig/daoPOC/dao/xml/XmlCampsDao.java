@@ -28,6 +28,11 @@ public class XmlCampsDao implements Dao<Camp> {
     }
 
     @Override
+    public int findNextId() {
+        return 0;
+    }
+
+    @Override
     public List<Camp> findAll() {
         return null;
     }
