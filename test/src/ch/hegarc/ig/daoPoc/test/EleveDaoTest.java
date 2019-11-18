@@ -40,4 +40,17 @@ public class EleveDaoTest {
         Assertions.assertTrue(AbstractDaoFactory.getFactory("db").getEleveDAO().update(obj));
 
     }
+
+    @Test
+    public void testCreate() {
+        Eleve obj = new Eleve();
+        obj.setNumber(3000);
+        obj.setMatricule("20");
+        obj.setNom("la Street");
+        obj.setPrenom("jul");
+        obj.setDateNaiss(new Date());
+
+
+        Assertions.assertTrue(AbstractDaoFactory.getFactory("db").getEleveDAO().create(obj));
+    }
 }
