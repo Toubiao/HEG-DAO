@@ -39,8 +39,8 @@ public class CampsDao implements Dao<Camp> {
         try {
             int result = ConnectionManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE camps SET lieu = " + obj.getLieu() + ", prix = " + obj.getPrix() + ", max_place = " + obj.getMaxPlaces() +
-                    " WHERE numero=" + obj.getNumber() + ")");
+                    ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE camps SET lieu = "+"'"+obj.getLieu()+"'"+", prix = " + obj.getPrix() + ", max_place = " + obj.getMaxPlaces() +
+                    " WHERE numero=" + obj.getNumber()+ "");
 
             retour = (result == 1);
 
