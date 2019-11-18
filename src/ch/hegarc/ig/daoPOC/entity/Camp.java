@@ -6,17 +6,17 @@ public class Camp {
     private int number;
     private String lieu;
     private BigDecimal prix;
-    private int max_place;
+    private int maxPlaces;
 
-    public Camp(){}
+    public Camp() {
+    }
 
-    public Camp(int number, String lieu, BigDecimal prix, int max_place){
+    public Camp(int number, String lieu, BigDecimal prix, int maxPlaces) {
         this.number = number;
         this.lieu = lieu;
         this.prix = prix;
-        this.max_place = max_place;
+        this.maxPlaces = maxPlaces;
     }
-
 
     public int getNumber() {
         return number;
@@ -42,11 +42,11 @@ public class Camp {
         this.prix = prix;
     }
 
-    public int getMax_place() {
-        return max_place;
+    public int getMaxPlaces() {
+        return maxPlaces;
     }
 
-    public void setMax_place(int max_place) {
-        this.max_place = max_place;
+    public void setMaxPlaces(int maxPlaces) {
+        this.maxPlaces = maxPlaces;
     }
 }
