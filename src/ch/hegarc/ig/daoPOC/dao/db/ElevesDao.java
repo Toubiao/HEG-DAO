@@ -21,7 +21,7 @@ public class ElevesDao implements Dao<Eleve> {
             DateFormat dt1 = new SimpleDateFormat("dd.MM.yy");
             int result = ConnectionManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeUpdate( "INSERT INTO Eleves (numero, matricule, nom, prenom, Date_Naiss, num_clas) VALUES (" + obj.getNumber() + ",\'" + obj.getMatricule() + "\',\'" + obj.getNom() + "\',\'" + obj.getPrenom() + "\',\'" + dt1.format(obj.getDateNaiss())+"\',\'2\'   )");
+                    ResultSet.CONCUR_READ_ONLY).executeUpdate( "INSERT INTO Eleves (numero, matricule, nom, prenom, Date_Naiss, num_clas) VALUES (" + findNextId() + ",\'" + obj.getMatricule() + "\',\'" + obj.getNom() + "\',\'" + obj.getPrenom() + "\',\'" + dt1.format(obj.getDateNaiss())+"\',\'2\'   )");
             return result == 1;
 
         }catch (SQLException e) {
@@ -54,7 +54,7 @@ public class ElevesDao implements Dao<Eleve> {
             int result = ConnectionManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE).executeUpdate(
-                    "DELETE FROM eleves WHERE numero = " + nb);
+                    "DELETE FROM eleves WHERE numero = ? ");
             return 1 == result;
 
         } catch (SQLException e) {
@@ -118,7 +118,7 @@ public class ElevesDao implements Dao<Eleve> {
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT E.Numero as \"num\",E.Matricule as \"matr\",E.Nom as \"nom\",E.Prenom as \"pren\",E.Date_Naiss as \"datenaiss\" \n" +
                     "FROM Eleves e" );
-            if (result.first()) {
+             if (result.first()) {
                 deserializeEleve(eleves, result);
                 while (result.next()) {
                     deserializeEleve(eleves, result);
