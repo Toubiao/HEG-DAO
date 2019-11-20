@@ -5,7 +5,8 @@ import ch.hegarc.ig.daoPOC.dao.intf.Dao;
 import ch.hegarc.ig.daoPOC.entity.Eleve;
 import ch.hegarc.ig.daoPOC.manager.ConnectionManager;
 
-
+import javax.xml.transform.Result;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -21,7 +22,7 @@ public class ElevesDao implements Dao<Eleve> {
             DateFormat dt1 = new SimpleDateFormat("dd.MM.yy");
             int result = ConnectionManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeUpdate( "INSERT INTO Eleves (numero, matricule, nom, prenom, Date_Naiss, num_clas) VALUES (" + findNextId() + ",\'" + obj.getMatricule() + "\',\'" + obj.getNom() + "\',\'" + obj.getPrenom() + "\',\'" + dt1.format(obj.getDateNaiss())+"\',\'2\'   )");
+                    ResultSet.CONCUR_READ_ONLY).executeUpdate( "INSERT INTO Eleves (numero, matricule, nom, prenom, Date_Naiss, num_clas) VALUES (" + obj.getNumber() + ",\'" + obj.getMatricule() + "\',\'" + obj.getNom() + "\',\'" + obj.getPrenom() + "\',\'" + dt1.format(obj.getDateNaiss())+"\',\'2\'   )");
             return result == 1;
 
         }catch (SQLException e) {
@@ -31,15 +32,14 @@ public class ElevesDao implements Dao<Eleve> {
     }
 
     public int findNextId() {
-        try{
-            ResultSet result = ConnectionManager.getConnection().createStatement(
-                    ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE).executeQuery(
-                    "SELECT max(numero)+1 as \"next\" FROM eleves"
+        ResultSet result;
+        try {
+            PreparedStatement pStmnt = ConnectionManager.getConnection().prepareStatement(
+                "SELECT max(numero)+1 as \"next\" FROM eleves"
             );
-            if(result.first()){
-                return result.getInt(1);
-            }
+            result = pStmnt.executeQuery();
+            return result.getInt(1);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,7 +54,7 @@ public class ElevesDao implements Dao<Eleve> {
             int result = ConnectionManager.getConnection().createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_UPDATABLE).executeUpdate(
-                    "DELETE FROM eleves WHERE numero = ? ");
+                    "DELETE FROM eleves WHERE numero = " + nb);
             return 1 == result;
 
         } catch (SQLException e) {
@@ -68,16 +68,18 @@ public class ElevesDao implements Dao<Eleve> {
     @Override
     public boolean update(Eleve obj) {
         boolean retour = false;
+        int result;
         try {
             DateFormat dt1 = new SimpleDateFormat("dd.MM.yy");
-            int result = ConnectionManager.getConnection().createStatement(
-                    ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE eleves SET matricule = "+obj.getMatricule()+", nom = "+"'"+obj.getNom()+"'"+", prenom = "+"'"+obj.getPrenom()+"'"+", date_naiss = "+"'"+
-                    dt1.format(obj.getDateNaiss())+"'"+" WHERE numero="+obj.getNumber()+"");
-
-            retour = (result ==1);
-
-
+            PreparedStatement pStmnt = ConnectionManager.getConnection().prepareStatement("UPDATE eleves SET matricule = ?, nom = ?, prenom =?, date_naiss = ? WHERE numero=?");
+            pStmnt.setString(1,obj.getMatricule());
+            pStmnt.setString(2,obj.getNom());
+            pStmnt.setString(3,obj.getPrenom());
+            pStmnt.setString(4,dt1.format(obj.getDateNaiss()));
+            pStmnt.setInt(5,obj.getNumber());
+            result = pStmnt.executeUpdate();
+            retour = (result == 1);
+            return retour;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -89,36 +91,39 @@ public class ElevesDao implements Dao<Eleve> {
     }
 
     @Override
-    public Eleve find(int id){
-        try{
-            List<Eleve> eleve = new ArrayList<>(1);
-            ResultSet result = ConnectionManager.getConnection().createStatement(
-            ResultSet.TYPE_SCROLL_INSENSITIVE,
-            ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT E.Numero as \"num\",E.Matricule as \"matr\",E.Nom as \"nom\",E.Prenom as \"pren\",E.Date_Naiss as \"datenaiss\" \n" +
-            "FROM Eleves e WHERE E.Numero = "+id );
+    public Eleve find(int id) {
+        Eleve eleve = new Eleve();
+        try {
+            ResultSet result;
+            PreparedStatement pStmnt = ConnectionManager.getConnection().prepareStatement("SELECT E.Numero as \"num\",E.Matricule as \"matr\",E.Nom as \"nom\",E.Prenom as \"pren\",E.Date_Naiss as \"datenaiss\" \n" +
+                    "FROM Eleves e WHERE E.Numero = ? ");
+            pStmnt.setInt(1, id);
+            result = pStmnt.executeQuery();
 
             if (result.first()) {
-                 deserializeEleve(eleve ,result);
+                return newEleve(result);
             }
-            return eleve.get(0);
-        } catch (SQLException e){
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         // On ferme la connection
         ConnectionManager.closeConnection();
 
-        return null;
+        return eleve;
     }
 
     @Override
     public List<Eleve> findAll() {
         List<Eleve> eleves = new ArrayList<>();
         try {
-            ResultSet result = ConnectionManager.getConnection().createStatement(
-                    ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT E.Numero as \"num\",E.Matricule as \"matr\",E.Nom as \"nom\",E.Prenom as \"pren\",E.Date_Naiss as \"datenaiss\" \n" +
-                    "FROM Eleves e" );
-             if (result.first()) {
+            ResultSet result;
+            PreparedStatement pStmnt = ConnectionManager.getConnection().prepareStatement(
+                    "SELECT E.Numero as \"num\",E.Matricule as \"matr\",E.Nom as \"nom\",E.Prenom as \"pren\",E.Date_Naiss as \"datenaiss\" \n" +
+                    "FROM Eleves e");
+            result = pStmnt.executeQuery();
+
+            if (result.first()) {
                 deserializeEleve(eleves, result);
                 while (result.next()) {
                     deserializeEleve(eleves, result);
@@ -133,6 +138,12 @@ public class ElevesDao implements Dao<Eleve> {
 
     private void deserializeEleve(List<Eleve> eleves, ResultSet result) throws SQLException {
         Eleve eleve;
+        eleve = newEleve(result);
+        eleves.add(eleve);
+    }
+
+    private Eleve newEleve(ResultSet result) throws SQLException {
+        Eleve eleve;
         eleve = new Eleve(
                 result.getInt(1),
                 result.getString(2),
@@ -140,7 +151,7 @@ public class ElevesDao implements Dao<Eleve> {
                 result.getString(4),
                 result.getDate(5)
         );
-        eleves.add(eleve);
+        return eleve;
     }
-    
+
 }
