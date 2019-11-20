@@ -8,6 +8,7 @@ import java.util.List;
 
 @XmlRootElement(name = "camps")
 @XmlAccessorType(XmlAccessType.FIELD)
+
 public class Camps {
     //classe qui permet la generation du fichier xml
     @XmlElement(name = "camp")
@@ -17,8 +18,15 @@ public class Camps {
 
     }
 
+    public List<Camp> getListeCamps() {
+        return listeCamps;
+    }
+
     public Camps(List<Camp> listeCamps) {
         this.listeCamps = listeCamps;
     }
 
+    public void setListeCamps(List<Camp> listeCamps) {
+        this.listeCamps = listeCamps;
+    }
 }

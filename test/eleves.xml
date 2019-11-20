@@ -18337,4 +18337,11 @@
         <prenom>Stéphane</prenom>
         <dateNaiss>2019-11-20T12:15:32.911+01:00</dateNaiss>
     </eleve>
+    <eleve>
+        <number>2618</number>
+        <matricule>38283</matricule>
+        <nom>Rossi</nom>
+        <prenom>Stéphane</prenom>
+        <dateNaiss>2019-11-20T14:36:34.605+01:00</dateNaiss>
+    </eleve>
 </eleves>

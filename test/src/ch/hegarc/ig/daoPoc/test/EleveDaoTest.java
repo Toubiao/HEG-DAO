@@ -16,7 +16,7 @@ import java.util.List;
 public class EleveDaoTest {
 
     @Test
-    public void testFindAllSizeShouldBe2617(){
+    public void testFindAllSizeShouldBe2618(){
         List<Eleve> eleves = AbstractDaoFactory.getFactory("db").getEleveDAO().findAll();
         Assertions.assertEquals(eleves.size(),2618);
     }
