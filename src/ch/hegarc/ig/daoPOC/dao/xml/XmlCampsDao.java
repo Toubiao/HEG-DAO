@@ -93,9 +93,9 @@ public class XmlCampsDao implements Dao<Camp> {
         return null;
     }
 
-    private boolean overrideXml(List<Camp> eleves){
+    private boolean overrideXml(List<Camp> camps){
         // cette fonction prend en paramètre une liste d'élève et va override le fichier xml
-        Camps listeEleves = new Camps(eleves);
+        Camps listeCamps = new Camps(camps);
         try {
             File file = new File("./eleves.xml");
             FileOutputStream outputStream  = new FileOutputStream(file, false);
@@ -103,7 +103,7 @@ public class XmlCampsDao implements Dao<Camp> {
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            jaxbMarshaller.marshal(listeEleves,outputStream);
+            jaxbMarshaller.marshal(listeCamps,outputStream);
             return true;
 
         }catch (JAXBException e) {
