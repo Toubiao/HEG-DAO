@@ -2,7 +2,14 @@ package ch.hegarc.ig.daoPOC.entity;
 
 import java.math.BigDecimal;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "camp")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Camp {
+
     private int number;
     private String lieu;
     private BigDecimal prix;

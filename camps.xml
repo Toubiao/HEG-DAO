@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<camps>
+    <camp>
+        <number>1</number>
+        <lieu>Charmey</lieu>
+        <prix>200</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+    <camp>
+        <number>2</number>
+        <lieu>Le Lieu</lieu>
+        <prix>130</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+    <camp>
+        <number>3</number>
+        <lieu>Sud de la France</lieu>
+        <prix>300</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+    <camp>
+        <number>4</number>
+        <lieu>Grand Raid Valais</lieu>
+        <prix>150</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+    <camp>
+        <number>5</number>
+        <lieu>Vercorin</lieu>
+        <prix>250</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+    <camp>
+        <number>7</number>
+        <lieu>Les Collons</lieu>
+        <prix>250</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+    <camp>
+        <number>8</number>
+        <lieu>Zinal</lieu>
+        <prix>240</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+    <camp>
+        <number>9</number>
+        <lieu>Neuchatel</lieu>
+        <prix>140</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+    <camp>
+        <number>13</number>
+        <lieu>Champery</lieu>
+        <prix>300</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+    <camp>
+        <number>10</number>
+        <lieu>Lac Neuchatel</lieu>
+        <prix>150</prix>
+        <maxPlaces>0</maxPlaces>
+    </camp>
+</camps>
