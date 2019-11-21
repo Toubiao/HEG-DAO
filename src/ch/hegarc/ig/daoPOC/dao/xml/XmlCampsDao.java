@@ -85,7 +85,7 @@ public class XmlCampsDao implements Dao<Camp> {
         try{
             JAXBContext jaxbContext = JAXBContext.newInstance(Camps.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            Camps camps = (Camps) jaxbUnmarshaller.unmarshal((new File("./eleves.xml")));
+            Camps camps = (Camps) jaxbUnmarshaller.unmarshal((new File("./camps.xml")));
             return camps.getListeCamps();
         } catch (JAXBException e) {
             e.printStackTrace();
@@ -97,7 +97,7 @@ public class XmlCampsDao implements Dao<Camp> {
         // cette fonction prend en paramètre une liste d'élève et va override le fichier xml
         Camps listeCamps = new Camps(camps);
         try {
-            File file = new File("./eleves.xml");
+            File file = new File("./camps.xml");
             FileOutputStream outputStream  = new FileOutputStream(file, false);
             JAXBContext jaxbContext = JAXBContext.newInstance(Camps.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();

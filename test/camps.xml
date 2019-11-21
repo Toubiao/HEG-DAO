@@ -56,8 +56,20 @@
     </camp>
     <camp>
         <number>10</number>
-        <lieu>Lac Neuchatel</lieu>
-        <prix>150</prix>
-        <maxPlaces>0</maxPlaces>
+        <lieu>Les Genevez</lieu>
+        <prix>120</prix>
+        <maxPlaces>4</maxPlaces>
+    </camp>
+    <camp>
+        <number>250</number>
+        <lieu>Neuchatel</lieu>
+        <prix>110</prix>
+        <maxPlaces>5</maxPlaces>
+    </camp>
+    <camp>
+        <number>250</number>
+        <lieu>Neuchatel</lieu>
+        <prix>110</prix>
+        <maxPlaces>5</maxPlaces>
     </camp>
 </camps>

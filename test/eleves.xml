@@ -3540,7 +3540,7 @@
         <matricule>38283</matricule>
         <nom>Montagnon</nom>
         <prenom>Gilbert</prenom>
-        <dateNaiss>2019-11-20T12:15:33.106+01:00</dateNaiss>
+        <dateNaiss>2019-11-21T12:49:01.474+01:00</dateNaiss>
     </eleve>
     <eleve>
         <number>333</number>
@@ -18343,5 +18343,12 @@
         <nom>Rossi</nom>
         <prenom>Stéphane</prenom>
         <dateNaiss>2019-11-20T14:36:34.605+01:00</dateNaiss>
+    </eleve>
+    <eleve>
+        <number>2618</number>
+        <matricule>38283</matricule>
+        <nom>Rossi</nom>
+        <prenom>Stéphane</prenom>
+        <dateNaiss>2019-11-21T12:49:01.286+01:00</dateNaiss>
     </eleve>
 </eleves>

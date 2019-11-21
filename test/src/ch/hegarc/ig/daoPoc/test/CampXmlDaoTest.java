@@ -13,9 +13,9 @@ import java.util.List;
 public class CampXmlDaoTest {
 
     @Test
-    public void testFindAllSizeShouldBe15(){
+    public void testFindAllSizeShouldBe11(){
         List<Camp> camps = AbstractDaoFactory.getFactory("xml").getCampDAO().findAll();
-        Assertions.assertEquals(camps.size(),15);
+        Assertions.assertEquals(camps.size(),11);
     }
 
     @Test
@@ -25,7 +25,7 @@ public class CampXmlDaoTest {
     }
 
     @Test void testUpdate() {
-        Camp obj  = new Camp(202,"Les Genevez", BigDecimal.valueOf(120),4);
+        Camp obj  = new Camp(10,"Les Genevez", BigDecimal.valueOf(120),4);
 
         AbstractDaoFactory.getFactory("xml").getCampDAO().update(obj);
 
