@@ -10,7 +10,7 @@ import java.util.List;
 public class Eleves{
         //classe qui permet la generation du fichier xml
         @XmlElement(name = "eleve")
-        List<Eleve> listeEleves;
+        private List<Eleve> listeEleves;
 
         public Eleves() {
 

@@ -12,7 +12,7 @@ import java.util.List;
 public class Camps {
     //classe qui permet la generation du fichier xml
     @XmlElement(name = "camp")
-    List<Camp> listeCamps;
+    private List<Camp> listeCamps;
 
     public Camps(){
 

@@ -15,7 +15,7 @@ public class CampXmlDaoTest {
     @Test
     public void testFindAllSizeShouldBe11(){
         List<Camp> camps = AbstractDaoFactory.getFactory("xml").getCampDAO().findAll();
-        Assertions.assertEquals(camps.size(),11);
+        Assertions.assertEquals(camps.size(),12);
     }
 
     @Test

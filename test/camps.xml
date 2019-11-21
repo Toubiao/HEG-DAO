@@ -72,4 +72,16 @@
         <prix>110</prix>
         <maxPlaces>5</maxPlaces>
     </camp>
+    <camp>
+        <number>250</number>
+        <lieu>Neuchatel</lieu>
+        <prix>110</prix>
+        <maxPlaces>5</maxPlaces>
+    </camp>
+    <camp>
+        <number>250</number>
+        <lieu>Neuchatel</lieu>
+        <prix>110</prix>
+        <maxPlaces>5</maxPlaces>
+    </camp>
 </camps>
