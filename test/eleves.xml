@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <eleves>
     <eleve>
-        <number>689</number>
-        <matricule>32822</matricule>
-        <nom>Lagger</nom>
-        <prenom>Laurent</prenom>
-        <dateNaiss>1977-08-25T00:00:00+01:00</dateNaiss>
-    </eleve>
-    <eleve>
         <number>690</number>
         <matricule>32923</matricule>
         <nom>Matile</nom>
@@ -3540,7 +3533,7 @@
         <matricule>38283</matricule>
         <nom>Montagnon</nom>
         <prenom>Gilbert</prenom>
-        <dateNaiss>2019-11-21T12:49:01.474+01:00</dateNaiss>
+        <dateNaiss>2019-11-27T09:57:38.991+01:00</dateNaiss>
     </eleve>
     <eleve>
         <number>333</number>
@@ -18328,27 +18321,6 @@
         <matricule>38283</matricule>
         <nom>Rossi</nom>
         <prenom>Stéphane</prenom>
-        <dateNaiss>2019-11-20T12:07:18.257+01:00</dateNaiss>
-    </eleve>
-    <eleve>
-        <number>2618</number>
-        <matricule>38283</matricule>
-        <nom>Rossi</nom>
-        <prenom>Stéphane</prenom>
-        <dateNaiss>2019-11-20T12:15:32.911+01:00</dateNaiss>
-    </eleve>
-    <eleve>
-        <number>2618</number>
-        <matricule>38283</matricule>
-        <nom>Rossi</nom>
-        <prenom>Stéphane</prenom>
-        <dateNaiss>2019-11-20T14:36:34.605+01:00</dateNaiss>
-    </eleve>
-    <eleve>
-        <number>2618</number>
-        <matricule>38283</matricule>
-        <nom>Rossi</nom>
-        <prenom>Stéphane</prenom>
-        <dateNaiss>2019-11-21T12:49:01.286+01:00</dateNaiss>
+        <dateNaiss>2019-11-27T09:57:38.241+01:00</dateNaiss>
     </eleve>
 </eleves>

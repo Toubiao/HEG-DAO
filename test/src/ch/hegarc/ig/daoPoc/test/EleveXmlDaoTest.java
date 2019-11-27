@@ -11,9 +11,9 @@ import java.util.List;
 public class EleveXmlDaoTest {
 
     @Test
-    public void testFindAllSizeShouldBe2621(){
+    public void testFindAllSizeShouldBe2618(){
         List<Eleve> eleves = AbstractDaoFactory.getFactory("xml").getEleveDAO().findAll();
-        Assertions.assertEquals(eleves.size(),2621);
+        Assertions.assertEquals(eleves.size(),2618);
     }
 
     @Test
@@ -35,5 +35,10 @@ public class EleveXmlDaoTest {
         Date now = new Date();
         Eleve obj  = new Eleve(2618,"38283","Rossi","Stéphane",now);
         Assertions.assertTrue(AbstractDaoFactory.getFactory("xml").getEleveDAO().create(obj));
+    }
+
+    @Test void testDelete(){
+        Assertions.assertTrue(AbstractDaoFactory.getFactory("xml").getEleveDAO().delete(689));
+        testFindAllSizeShouldBe2618();
     }
 }
